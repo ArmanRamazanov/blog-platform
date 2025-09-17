@@ -1,12 +1,56 @@
-# React + Vite
+# Blog Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)  
+[![React](https://img.shields.io/badge/React-19.x-blue)](https://reactjs.org/)  
+[![Vite](https://img.shields.io/badge/Vite-7.x-purple)](https://vitejs.dev/)
 
-Currently, two official plugins are available:
+A simple React blog platform project built with **Vite**, **React**, and modern tooling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🏁 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Follow these steps to run the project locally.
+
+### 1️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 2️⃣ Run the development server
+
+```bash
+npm run dev
+```
+
+Open your browser at [http://localhost:5173](http://localhost:5173)
+
+## 📦 Dependencies
+
+### Runtime Dependencies
+
+- `ldrs` ^1.1.7
+- `prop-types` ^15.8.1
+- `react` ^19.1.1
+- `react-dom` ^19.1.1
+- `react-hook-form` ^7.62.0
+- `react-markdown` ^10.1.0
+- `react-router-dom` ^7.8.0
+
+### Development Dependencies
+
+- `@eslint/js` ^9.34.0
+- `@types/react` ^19.1.9
+- `@types/react-dom` ^19.1.7
+- `@vitejs/plugin-react` ^4.7.0
+- `eslint` ^9.34.0
+- `eslint-config-prettier` ^10.1.8
+- `eslint-plugin-prettier` ^5.5.4
+- `eslint-plugin-react` ^7.37.5
+- `exact` ^1.0.1
+- `globals` ^16.3.0
+- `husky` ^9.1.7
+- `lint-staged` ^16.1.5
+- `prettier` ^3.6.2
+- `vite` ^7.1.0
