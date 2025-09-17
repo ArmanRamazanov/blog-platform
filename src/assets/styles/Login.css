@@ -1,0 +1,36 @@
+.login {
+    height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+}
+
+.login h1 {
+    font-family:TitiliumWeb-Bold;
+    font-size:46px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.login__inner {
+    max-width:500px;
+    width:100%;
+}
+
+.login-message {
+    color:red;
+    font-size:22px;
+}
+
+.create-account {
+   text-align:center;
+   margin-bottom:10px;
+   font-size:18px;
+}
+
+.create-account a {
+   margin-left: 5px;
+   text-decoration: none;
+   color:var(--green-color);
+}

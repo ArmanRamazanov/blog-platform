@@ -1,0 +1,59 @@
+.sign-up {
+    height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.sign-up__inner h1 {
+    font-family:TitiliumWeb-Bold;
+    font-size:46px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.sign-up__inner {
+    max-width:500px;
+    width:100%;
+}
+
+form {
+    position:relative;
+}
+
+input {
+    display:block;
+    border: 1px solid var(--light-grey-color);
+    border-radius:8px;
+    padding:12px 16px;
+}
+
+input::placeholder {
+    color:var(--light-grey-color);
+}
+
+input[type='checkbox'] {
+    display:inline-block;
+    margin-right:5px;
+}
+
+label {
+    font-size:14px;
+}
+
+.checkbox-error {
+    display:block;
+}
+
+.login-account{
+   text-align:center;
+   margin-bottom:10px;
+   font-size:18px;
+}
+
+.login-account a {
+   margin-left: 5px;
+   text-decoration: none;
+   color:var(--green-color);
+}

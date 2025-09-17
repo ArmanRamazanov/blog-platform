@@ -1,0 +1,96 @@
+.article {
+    width:100%;
+    border:1px solid var(--light-grey-color);
+    border-radius:10px;
+    padding:16px 10px;
+}
+
+.article__header {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.article__header div:last-child {
+    display:flex;
+    flex-direction:column;
+}
+
+.article__like-button {
+    align-self:flex-end;
+    max-width:65px;
+}
+
+.article__title a {
+    text-decoration: none;
+    color:black;
+}
+
+.article__info {
+    display:flex;
+    flex-direction:row;
+    gap:5px;
+}
+
+.article__info div {
+    display:flex;
+    flex-direction:column;
+}
+
+.article__creator-name {
+    font-family: Source-Sans-3-SemiBold, sans-serif;
+    color:var(--green-color);
+}
+
+.article__created-date {
+    font-size:12.8px;
+    color:var(--light-grey-color);
+}
+
+.article__like-button {
+    display:flex;
+    flex-direction:row;
+    gap:3px;
+    padding: 8px 16px;
+    background-color:white;
+    border:1px solid var(--green-color);
+    border-radius:5px;
+}
+
+.article__like-button p {
+    margin-top:2px;
+}
+
+.article__like-button img {
+    width:20px;
+    height:20px;
+}
+
+.article__content {
+    margin-top: 10px;
+}
+
+.article__paragraph {
+    margin-top:8px;
+    color:var(--light-grey-color);
+}
+
+.article__footer {
+    padding:8px 0px;
+}
+
+.article__tags {
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    list-style:none;
+}
+
+.article__tags li {
+    padding: 3px 16px;
+    border-radius:10px;
+    border:1px solid var(--light-grey-color);
+    font-size:12.8px;
+    color:var(--light-grey-color);
+    background-color:white;
+}

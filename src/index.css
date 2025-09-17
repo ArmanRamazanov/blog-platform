@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family:Source-Sans-3-Regular;
+    src:url('../assets/fonts/SourceSans3/SourceSans3-Regular.ttf');
+}
+
+@font-face {
+    font-family:TitiliumWeb;
+    src:url('../assets/fonts/TitiliumWeb/TitilliumWeb-Regular.ttf');
+}
+
+@font-face {
+    font-family:Source-Sans-3-SemiBold;
+    src:url('../assets/fonts/SourceSans3/SourceSans3-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: TitiliumWeb-Bold;
+    src:url('../assets/fonts/TitiliumWeb/TitilliumWeb-Bold.ttf');
+}
+
+/* colors */
+:root {
+    --green-color: #61BB61;
+    --light-grey-color: #AAAAAA;
+    --black-color:#333333;
+}
+
+body, html {
+    width:100vw;
+    height:100vh;
+    font-family: Source-Sans-3-Regular, sans-serif;
+    overflow-x:hidden;
+}
+
+h1, h2 {
+    font-family: TitiliumWeb, sans-serif;
+}
+
+p {
+    display:inline-block;
+}
+
+button:hover {
+    cursor:pointer;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea {
+    width: 100%;
+    margin-bottom:8px;
+}
+
+input[type='submit']:hover {
+    cursor:pointer
+}
+
+input[type='submit'] {
+    right:0;
+    position:absolute;
+    background-color:var(--green-color);
+    font-size:18px;
+    padding:10px 12px;
+    border-radius: 5px;
+    color:white;
+    font-family:Source-Sans-3-Regular, sans-serif;
+}
+
+input::placeholder {
+    color:var(--light-grey-color);
+}
+
+form {
+    position:relative;
+}
+
+input {
+    display:block;
+    border: 1px solid var(--light-grey-color);
+    border-radius:8px;
+    padding:12px 16px;
+}
+
+textarea {
+    padding:10px;
+    border-radius:8px;
+    color:black;
+}
+
+.fallback {
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article__like-button .liked-article {
+    text-align:right;
+}
+
+.error {
+    color:red;
+    margin-bottom:3px;
+    font-size:16px;
+}
+
+.success-message {
+    color:#6cc070;
+    font-size:24px;
+    margin-bottom:5px;
+    text-align:center;
+}
+
+.not-found,
+.error-page {
+    display:flex;
+    flex-direction:column;
+    height:80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found__content h2,
+.error-page__content h2{
+    font-size:100px;
+    text-align:center;
+}
+
+.not-found__content a, 
+.error-page__conetnt a{
+    padding:7px 15px;
+    border:1px solid black;
+    text-decoration:none;
+    color:white;
+    background-color:var(--green-color);
+    margin-left:10px;
+    border:none;
+}
+

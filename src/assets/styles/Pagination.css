@@ -1,0 +1,13 @@
+
+
+.pagination-button {
+    background-color:white;
+    padding: 10px;
+    color:var(--green-color);
+    border:1px solid var(--green-color);
+}
+
+.pagination-button-active {
+    background-color:var(--green-color);
+    color:white;
+}

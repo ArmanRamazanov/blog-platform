@@ -1,0 +1,136 @@
+.header {
+    padding: 20px 0;
+}
+
+.header__inner {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    max-width:800px;
+    margin: 0 auto;
+}
+
+.header__logo h1 {
+    color: var(--green-color);
+}
+
+.header__nav ul {
+    height:100%;
+    display:inline-flex;
+    flex-direction:row;
+    align-items:center;
+    gap:15px;
+}
+
+.header__nav ul li {
+    display:flex;
+    flex-direction:row;
+    list-style:none;
+    gap:5px;
+}
+
+.header__nav ul li a {
+    color:black;
+    text-decoration:none;
+    transition:0.2s ease;
+}
+
+.header__nav ul li a:hover {
+    color:var(--light-grey-color)
+}
+
+.header__nav ul li a.active {
+    color:var(--green-color);
+    text-decoration-line: underline;
+    text-decoration-color: var(--green-color);
+    text-underline-offset: 5px;
+}
+
+.header__nav ul li img {
+    margin-top:-2px;
+}
+
+.header__nav ul li:nth-child(4) a {
+    position:relative;
+    padding-left:30px;
+}
+
+.header__nav ul li:nth-child(4) a img {
+    border-radius:50%;
+    border:none;
+    position:absolute;
+    left:-5%;
+    top:-10%
+}
+
+.header__nav .sidebar {
+    display:none;
+}
+
+.header__nav .menu-bar li:last-child {
+    display:none;
+}
+
+@media screen and (max-width:850px) {
+    .header {
+        padding: 20px 30px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .header__nav .hideOnMobile {
+        display:none;
+    }
+
+    .header__nav .menu-bar li:last-child {
+        margin-top:3px;
+        display:inline;
+    }
+
+    .header__nav .menu-bar li:last-child button {
+        width:100%;
+        background:none;
+        border:none;
+    }
+
+    .header__nav .sidebar {
+        position:fixed;
+        top:0;
+        right:0;
+        height:100vh;
+        background-color:rgba(255, 255, 255, 0.544);
+        z-index:999;
+        width:250px;
+        display:flex;
+        flex-direction:column;
+        padding-top:30px;
+        backdrop-filter: blur(10px);
+    }
+
+    .header__nav .sidebar li {
+        width:100%;
+        text-align: center;
+    }
+
+    .header__nav .sidebar li a {
+        width:100%;
+        text-align:center;
+        /* color:var(--green-color); */
+    }
+
+    .header__nav .sidebar li a:last-child{
+        padding-left:0;
+    }
+
+    .header__nav .sidebar li button {
+        background:none;
+        border:none;
+        margin-left:10px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .header__nav .sidebar {
+        width:100%;
+    }
+}
