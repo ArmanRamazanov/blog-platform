@@ -54,3 +54,7 @@ Open your browser at [http://localhost:5173](http://localhost:5173)
 - `lint-staged` ^16.1.5
 - `prettier` ^3.6.2
 - `vite` ^7.1.0
+
+### Live Link
+
+Live deployed link is at [https://blog-platform-orcin-ten.vercel.app/](https://blog-platform-orcin-ten.vercel.app/)
