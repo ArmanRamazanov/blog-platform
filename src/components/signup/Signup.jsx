@@ -61,7 +61,7 @@ export default function Signup() {
         <h1>Sign Up</h1>
         <div className='login-account'>
           Already a member?
-          <Link to='/login'>Login to account</Link>
+          <Link to='/sign-in'>Login to account</Link>
         </div>
         <form
           onSubmit={handleSubmit((data) => {
