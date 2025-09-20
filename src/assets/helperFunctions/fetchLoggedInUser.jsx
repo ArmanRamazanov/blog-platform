@@ -4,7 +4,7 @@ export default async function fetchLoggedInUser(loggedInToken, setUserData, setP
     response = await fetch('https://realworld.habsida.net/api/user', {
       method: 'GET',
       headers: {
-        Authorization: `${loggedInToken}`,
+        Authorization: `Token ${loggedInToken}`,
       },
     })
     if (!response.ok) throw { status: response.status }

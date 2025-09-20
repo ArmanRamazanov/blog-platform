@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../assets/styles/NewPost.css'
 import PropTypes from 'prop-types'
 
-export default function PostArticle({ userLoggedInToken, setPleaseLoginMessage }) {
+export default function PostArticle({ userLoggedInToken }) {
   const [tags, setTags] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -33,7 +33,7 @@ export default function PostArticle({ userLoggedInToken, setPleaseLoginMessage }
       response = await fetch('https://realworld.habsida.net/api/articles', {
         method: 'POST',
         headers: {
-          Authorization: userLoggedInToken,
+          Authorization: `Token ${userLoggedInToken}`,
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
@@ -49,14 +49,7 @@ export default function PostArticle({ userLoggedInToken, setPleaseLoginMessage }
       return navigate('/', { state: 'Successfully created!' })
     } catch (error) {
       const result = await error.response.json()
-
-      if (error.status === 401) {
-        setPleaseLoginMessage(<div className='login-message'>Please login first!</div>)
-        setTimeout(() => {
-          setPleaseLoginMessage(null)
-        }, 1000)
-        return navigate('/login')
-      } else if (error.status === 422) {
+      if (error.status === 422) {
         if (result.errors.body[0].includes('UNIQUE constraint failed')) {
           return setError('postTitle', {
             type: 'server',

@@ -3,7 +3,6 @@ import '../../assets/styles/Home.css'
 import { lazy, Suspense, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { articlesLoader } from '../../assets/helperFunctions/articlesLoader'
-import { useLocation } from 'react-router-dom'
 
 //tail-chase loader
 import { TailChase } from 'ldrs/react'
@@ -20,15 +19,9 @@ export default function Home({
   userLoggedInToken,
   setPleaseLoginMessage,
   querySkip,
+  successMessage,
 }) {
-  const location = useLocation()
-
   const [articles, setArticles] = useState(null)
-  const [successMessage, setSuccessMessage] = useState(location.state ? location.state : null)
-
-  setTimeout(() => {
-    setSuccessMessage(null)
-  }, 1000)
 
   useEffect(() => {
     const loader = async () => {
@@ -102,8 +95,9 @@ Home.propTypes = {
   setCurrentPage: PropTypes.func.isRequired,
   postsPerPage: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
-  pleaseLoginMessage: PropTypes.node, // может быть JSX или null
+  pleaseLoginMessage: PropTypes.node,
   userLoggedInToken: PropTypes.string,
   setPleaseLoginMessage: PropTypes.func.isRequired,
   querySkip: PropTypes.number,
+  successMessage: PropTypes.string,
 }

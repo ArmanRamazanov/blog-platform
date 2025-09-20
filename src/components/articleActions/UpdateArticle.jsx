@@ -4,7 +4,7 @@ import { useNavigate, useLoaderData, useParams } from 'react-router-dom'
 import '../../assets/styles/NewPost.css'
 import PropTypes from 'prop-types'
 
-export default function UpdateArticle({ userLoggedInToken }) {
+export default function UpdateArticle({ userLoggedInToken, setSuccessMessage }) {
   const article = useLoaderData()
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
@@ -32,7 +32,7 @@ export default function UpdateArticle({ userLoggedInToken }) {
       response = await fetch(`https://realworld.habsida.net/api/articles/${slug}`, {
         method: 'PUT',
         headers: {
-          Authorization: userLoggedInToken,
+          Authorization: `Token ${userLoggedInToken}`,
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
@@ -44,7 +44,11 @@ export default function UpdateArticle({ userLoggedInToken }) {
         }),
       })
       if (!response.ok) throw { status: response }
-      return navigate('/', { state: 'Successfully updated!' })
+      setSuccessMessage('Successfully updated!')
+      setTimeout(() => {
+        setSuccessMessage('')
+      }, 1000)
+      return navigate('/')
     } catch {
       return setError('root', { type: 'server', message: 'Something went wrong' })
     } finally {
@@ -143,4 +147,5 @@ export default function UpdateArticle({ userLoggedInToken }) {
 
 UpdateArticle.propTypes = {
   userLoggedInToken: PropTypes.string.isRequired,
+  setSuccessMessage: PropTypes.func.isRequired,
 }

@@ -1,13 +1,13 @@
 import favoriteArticle from '../../assets/helperFunctions/favoriteArticle'
 import '../../assets/styles/Article.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 
 import authorImageDefault from '../../assets/icons/profile.svg'
+import likeButton from '../../assets/icons/like.svg'
 
 export default function Article({ article, loggedInToken, setPleaseLoginMessage }) {
-  const navigate = useNavigate()
   const [likedResult, setLikedResult] = useState(null)
 
   return (
@@ -29,6 +29,7 @@ export default function Article({ article, loggedInToken, setPleaseLoginMessage 
           </div>
           <div>
             <button
+              disabled={loggedInToken ? false : true}
               className='article__like-button'
               onClick={async () => {
                 const response = await favoriteArticle(
@@ -36,13 +37,6 @@ export default function Article({ article, loggedInToken, setPleaseLoginMessage 
                   loggedInToken,
                   setPleaseLoginMessage,
                 )
-                if (response.status === 401) {
-                  setPleaseLoginMessage(<div className='login-message'>Please login first!</div>)
-                  setTimeout(() => {
-                    setPleaseLoginMessage(null)
-                  }, 1000)
-                  return navigate('/login')
-                }
                 if (response.status === 200) {
                   setLikedResult(<p className='liked-article'>You liked the article!</p>)
                   setTimeout(() => {
@@ -52,7 +46,7 @@ export default function Article({ article, loggedInToken, setPleaseLoginMessage 
                 }
               }}
             >
-              <img src='../../assets/icons/like.svg' alt='like'></img>
+              <img src={likeButton} alt='like'></img>
               <p>{article.favoritesCount}</p>
             </button>
             {likedResult && likedResult}

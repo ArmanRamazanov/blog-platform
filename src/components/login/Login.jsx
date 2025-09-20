@@ -60,7 +60,7 @@ export default function Login({ setToken, pleaseLoginMessage, setUserData }) {
         <h1>Sign in</h1>
         <div className='create-account'>
           Don&apos;t you have an account?
-          <Link to='/signup'>Create account</Link>
+          <Link to='/sign-up'>Create account</Link>
         </div>
         <form
           onSubmit={handleSubmit((data) => {

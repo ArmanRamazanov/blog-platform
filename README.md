@@ -1,6 +1,5 @@
 # Blog Platform
 
-[![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)  
 [![React](https://img.shields.io/badge/React-19.x-blue)](https://reactjs.org/)  
 [![Vite](https://img.shields.io/badge/Vite-7.x-purple)](https://vitejs.dev/)
 

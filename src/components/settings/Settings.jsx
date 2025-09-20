@@ -36,7 +36,7 @@ export default function Settings({
       response = await fetch('https://realworld.habsida.net/api/user', {
         method: 'PUT',
         headers: {
-          Authorization: `${loggedInToken}`,
+          Authorization: `Token ${loggedInToken}`,
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
@@ -49,7 +49,6 @@ export default function Settings({
       const result = await response.json()
       if (!response.ok) throw { status: response.status, result }
       setUserData(result.user)
-      setToken(loggedInToken)
       setSuccessUpdate('Your information was updated')
       setTimeout(() => {
         setSuccessUpdate('')
@@ -61,7 +60,7 @@ export default function Settings({
         setTimeout(() => {
           setPleaseLoginMessage(null)
         }, 1000)
-        return navigate('/login')
+        return navigate('/sign-in')
       }
       return setError('root', {
         type: 'server',

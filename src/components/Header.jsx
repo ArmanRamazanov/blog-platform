@@ -32,16 +32,20 @@ export default function Header({ userData }) {
               <li>
                 <NavLink to='/'>Home</NavLink>
               </li>
+              {userData && (
+                <li>
+                  <NavLink to={userData ? 'new-article' : 'sign-in'}>New Post</NavLink>
+                </li>
+              )}
               <li>
-                <NavLink to='/new-article'>New Post</NavLink>
+                <NavLink to='settings'>Settings</NavLink>
               </li>
               <li>
-                <NavLink to={userData ? 'settings' : 'login'}>Settings</NavLink>
-              </li>
-              <li>
-                <NavLink to={userData ? 'profile' : 'login'}>
-                  {userData ? userData.username : 'profile'}
-                </NavLink>
+                {userData ? (
+                  <NavLink to='profile'>{userData ? userData.username : 'profile'}</NavLink>
+                ) : (
+                  <NavLink to='sign-in'>Login</NavLink>
+                )}
               </li>
             </ul>
           )}
@@ -49,17 +53,19 @@ export default function Header({ userData }) {
             <li className='hideOnMobile'>
               <NavLink to='/'>Home</NavLink>
             </li>
-            <li className='hideOnMobile'>
-              <img src={newPostIcon} alt='new post'></img>
-              <NavLink to='new-article'>New Post</NavLink>
-            </li>
+            {userData && (
+              <li className='hideOnMobile'>
+                <img src={newPostIcon} alt='new post'></img>
+                <NavLink to='new-article'>New Post</NavLink>
+              </li>
+            )}
             <li className='hideOnMobile'>
               <img src={settingsIcon} alt='settings' />
-              <NavLink to='/settings'>Settings</NavLink>
+              <NavLink to='settings'>Settings</NavLink>
             </li>
             <li className='hideOnMobile'>
               {userData ? (
-                <NavLink to='/profile'>
+                <NavLink to='profile'>
                   <img
                     src={userData ? (userData.image ? userData.image : profileIcon) : profileIcon}
                     onError={(ev) => (ev.target.src = profileIcon)}
@@ -70,7 +76,7 @@ export default function Header({ userData }) {
                   {userData ? userData.username : 'profile'}
                 </NavLink>
               ) : (
-                <NavLink to='/login'>
+                <NavLink to='sign-in'>
                   <img
                     src={userData ? (userData.image ? userData.image : profileIcon) : profileIcon}
                     onError={(ev) => (ev.target.src = profileIcon)}

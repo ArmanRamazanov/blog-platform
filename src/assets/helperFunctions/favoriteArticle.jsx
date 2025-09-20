@@ -5,7 +5,7 @@ export default async function favoriteArticle(slug, loggedInToken) {
     response = await fetch(`https://realworld.habsida.net/api/articles/${slug}/favorite`, {
       method: 'POST',
       headers: {
-        Authorization: `${loggedInToken}`,
+        Authorization: `Token ${loggedInToken}`,
       },
     })
     const result = await response.json()

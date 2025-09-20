@@ -1,13 +1,18 @@
 import { useLoaderData, useNavigate, Link, useParams } from 'react-router-dom'
 import '../../assets/styles/ArticleDetails.css'
-import Markdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown'
 import favoriteArticle from '../../assets/helperFunctions/favoriteArticle'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import authorImageDefault from '../../assets/icons/profile.svg'
 
-export default function ArticleDetails({ userLoggedInToken, setPleaseLoginMessage, userData }) {
+export default function ArticleDetails({
+  userLoggedInToken,
+  setPleaseLoginMessage,
+  userData,
+  setSuccessMessage,
+}) {
   const article = useLoaderData()
 
   const navigate = useNavigate()
@@ -26,11 +31,15 @@ export default function ArticleDetails({ userLoggedInToken, setPleaseLoginMessag
       response = await fetch(`https://realworld.habsida.net/api/articles/${slug}`, {
         method: 'DELETE',
         headers: {
-          Authorization: userLoggedInToken,
+          Authorization: `Token ${userLoggedInToken}`,
         },
       })
       if (!response.ok) throw { status: response.status }
-      return navigate('/', { state: 'Successfully deleted!' })
+      setSuccessMessage('Successfully deleted!')
+      setTimeout(() => {
+        setSuccessMessage('')
+      }, 1000)
+      return navigate('/')
     } catch {
       setError('Something went wrong. Please try again!')
       setTimeout(() => {
@@ -133,7 +142,7 @@ export default function ArticleDetails({ userLoggedInToken, setPleaseLoginMessag
           </div>
         </div>
         <section className='article-details__section'>
-          <Markdown>{article.article.body}</Markdown>
+          <ReactMarkdown>{article.article.body}</ReactMarkdown>
           <ul className='article-details__tags'>
             {article.article.tagList.map((tag) => (
               <li key={tag} className='article-details__tag'>
@@ -217,6 +226,7 @@ ArticleDetails.propTypes = {
   userData: PropTypes.shape({
     username: PropTypes.string,
   }),
+  setSuccessMessage: PropTypes.func.isRequired,
 }
 
 export async function articleDetailsLoader({ params }) {

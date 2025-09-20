@@ -45,6 +45,8 @@ function App() {
   //Please login message
   const [pleaseLoginMessage, setPleaseLoginMessage] = useState(null)
 
+  const [successMessage, setSuccessMessage] = useState('')
+
   useEffect(() => {
     if (getCookie('token')) {
       const value = getCookie('token')
@@ -69,6 +71,7 @@ function App() {
               postsPerPage={postsPerPage}
               setCurrentPage={setCurrentPage}
               querySkip={querySkip}
+              successMessage={successMessage}
             />
           }
         ></Route>
@@ -84,6 +87,7 @@ function App() {
               postsPerPage={postsPerPage}
               setCurrentPage={setCurrentPage}
               querySkip={querySkip}
+              successMessage={successMessage}
             />
           }
         ></Route>
@@ -99,7 +103,7 @@ function App() {
         ></Route>
 
         <Route
-          path='signup'
+          path='sign-up'
           element={
             <Suspense
               fallback={
@@ -108,12 +112,12 @@ function App() {
                 </div>
               }
             >
-              <Signup setToken={setLoggedInToken} />
+              <Signup />
             </Suspense>
           }
         ></Route>
         <Route
-          path='login'
+          path='sign-in'
           element={
             <Suspense
               fallback={
@@ -150,6 +154,7 @@ function App() {
               userLoggedInToken={loggedInToken}
               setPleaseLoginMessage={setPleaseLoginMessage}
               userData={userData}
+              setSuccessMessage={setSuccessMessage}
               errorElement={<Error />}
             />
           }

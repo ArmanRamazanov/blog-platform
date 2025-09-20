@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "ldrs": "^1.1.7",
+    "marked": "^16.3.0",
     "prop-types": "^15.8.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -37,11 +38,7 @@
     "vite": "^7.1.0"
   },
   "lint-staged": {
-    "*.{js,jsx,css}": [
-      "prettier --write --config ./.prettierrc.json"
-    ],
-    "*.{js,jsx}": [
-      "eslint --cache --fix"
-    ]
+    "*.{js,jsx,css}": "prettier --write",
+    "*.{js,jsx}": "eslint --cache --fix"
   }
 }
