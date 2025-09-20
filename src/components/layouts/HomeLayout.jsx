@@ -22,14 +22,13 @@ export default function Home({
   successMessage,
 }) {
   const [articles, setArticles] = useState(null)
-
   useEffect(() => {
     const loader = async () => {
       try {
         const articles = await articlesLoader(querySkip)
         setArticles(articles)
       } catch (error) {
-        console.log(error)
+        alert(error)
       }
     }
 

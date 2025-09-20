@@ -67,7 +67,6 @@ export default function ArticleDetails({
       const result = await response.json()
       if (!response.ok) throw { status: response.status, result: result }
     } catch (error) {
-      console.log(error)
       if (error.status === 401) {
         setPleaseLoginMessage(<div className='login-message'>Please login first!</div>)
         setTimeout(() => {

@@ -40,7 +40,6 @@ export default function Login({ setToken, pleaseLoginMessage, setUserData }) {
       setUserData(result.user)
       return navigate('/')
     } catch (error) {
-      console.log(error.result)
       if (error.result.errors.body) {
         return setError('invalidCredentials', {
           type: 'server',

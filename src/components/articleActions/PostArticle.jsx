@@ -23,7 +23,6 @@ export default function PostArticle({ userLoggedInToken }) {
     setTags(tags.filter((tag) => tag.id !== id))
   }
 
-  console.log([...tags])
   async function onSubmit(data, e) {
     e.preventDefault()
 
@@ -72,7 +71,6 @@ export default function PostArticle({ userLoggedInToken }) {
         <h1>New Article</h1>
         <form
           onSubmit={handleSubmit((data, e) => {
-            console.log(data)
             onSubmit(data, e)
           })}
         >

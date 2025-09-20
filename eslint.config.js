@@ -30,6 +30,7 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       quotes: ['error', 'single'],
       'react/react-in-jsx-scope': 'off',
+      'no-console': 'error',
     },
     ignores: ['node_modules/**'],
   },

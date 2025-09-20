@@ -54,7 +54,6 @@ export default function Settings({
         setSuccessUpdate('')
       }, 1000)
     } catch (error) {
-      console.log(error.result)
       if (error.status === 401) {
         setPleaseLoginMessage(<div className='login-message'>Please login first!</div>)
         setTimeout(() => {
@@ -178,7 +177,6 @@ export default function Settings({
             type='button'
             className='logout-button'
             onClick={() => {
-              console.log('Before logout: ', loggedInToken, userData)
               setCookie('token', loggedInToken, -1)
               setToken(null)
               setUserData(null)
