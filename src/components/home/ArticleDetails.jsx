@@ -60,7 +60,7 @@ export default function ArticleDetails({
         {
           method: 'PUT',
           headers: {
-            Authorization: userLoggedInToken,
+            Authorization: `Token ${userLoggedInToken}`,
           },
         },
       )
@@ -72,7 +72,7 @@ export default function ArticleDetails({
         setTimeout(() => {
           setPleaseLoginMessage(null)
         }, 1000)
-        return navigate('/login')
+        return navigate('/sign-in')
       }
       setFollowError('Something went wrong. Please try again!')
       setTimeout(() => {
@@ -154,14 +154,13 @@ export default function ArticleDetails({
             <div>
               <img
                 src={
-                  !article.article.author.image
-                    ? '../../../assets/icons/profile.svg'
-                    : article.article.author.image
+                  article.article.author.image ? article.article.author.image : authorImageDefault
                 }
                 alt='profile-picture'
                 width='30px'
                 height='30px'
                 className='article-details__author-image'
+                onError={(ev) => (ev.target.src = authorImageDefault)}
               ></img>
               <div>
                 <p className='article-details__creator-name'>{article.article.author.username}</p>
@@ -174,19 +173,13 @@ export default function ArticleDetails({
               <button
                 type='button'
                 className='article-details__favorite'
+                disabled={userLoggedInToken ? false : true}
                 onClick={async () => {
                   const response = await favoriteArticle(
                     article.article.slug,
                     userLoggedInToken,
                     setPleaseLoginMessage,
                   )
-                  if (response.status === 401) {
-                    setPleaseLoginMessage('Please login first')
-                    setTimeout(() => {
-                      setPleaseLoginMessage(null)
-                    }, 1000)
-                    return navigate('/login')
-                  }
                   if (response.status === 200) {
                     setLikedResult(<div className='liked-article'>You liked the article!</div>)
                     setTimeout(() => {

@@ -98,6 +98,7 @@ function App() {
             <PostArticle
               userLoggedInToken={loggedInToken}
               setPleaseLoginMessage={setPleaseLoginMessage}
+              setSuccessMessage={setSuccessMessage}
             />
           }
         ></Route>

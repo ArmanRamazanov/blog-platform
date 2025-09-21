@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../assets/styles/NewPost.css'
 import PropTypes from 'prop-types'
 
-export default function PostArticle({ userLoggedInToken }) {
+export default function PostArticle({ userLoggedInToken, setSuccessMessage }) {
   const [tags, setTags] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -45,7 +45,11 @@ export default function PostArticle({ userLoggedInToken }) {
         }),
       })
       if (!response.ok) throw { status: response.status, response }
-      return navigate('/', { state: 'Successfully created!' })
+      setSuccessMessage('Successfully created!')
+      setTimeout(() => {
+        setSuccessMessage('')
+      }, 1000)
+      return navigate('/')
     } catch (error) {
       const result = await error.response.json()
       if (error.status === 422) {
@@ -148,4 +152,5 @@ export default function PostArticle({ userLoggedInToken }) {
 PostArticle.propTypes = {
   userLoggedInToken: PropTypes.string.isRequired,
   setPleaseLoginMessage: PropTypes.func.isRequired,
+  setSuccessMessage: PropTypes.func.isRequired,
 }

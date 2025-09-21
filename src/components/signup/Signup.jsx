@@ -36,7 +36,7 @@ export default function Signup() {
         }),
       })
       if (!response.ok) throw { status: response.status, response }
-      return navigate('/login')
+      return navigate('/sign-in')
     } catch (error) {
       const result = await error.response.json()
 
