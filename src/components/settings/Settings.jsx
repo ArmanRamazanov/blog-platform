@@ -53,14 +53,7 @@ export default function Settings({
       setTimeout(() => {
         setSuccessUpdate('')
       }, 1000)
-    } catch (error) {
-      if (error.status === 401) {
-        setPleaseLoginMessage(<div className='login-message'>Please login first!</div>)
-        setTimeout(() => {
-          setPleaseLoginMessage(null)
-        }, 1000)
-        return navigate('/sign-in')
-      }
+    } catch {
       return setError('root', {
         type: 'server',
         message: 'Something went wrong!',
@@ -84,6 +77,12 @@ export default function Settings({
               data.avatar === userData?.image
             ) {
               return
+            } else if (!loggedInToken) {
+              setPleaseLoginMessage(<div className='login-message'>Please login first!</div>)
+              setTimeout(() => {
+                setPleaseLoginMessage(null)
+              }, 1000)
+              return navigate('/sign-in')
             }
             onSubmit(data)
           })}

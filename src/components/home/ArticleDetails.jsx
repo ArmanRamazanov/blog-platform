@@ -66,14 +66,7 @@ export default function ArticleDetails({
       )
       const result = await response.json()
       if (!response.ok) throw { status: response.status, result: result }
-    } catch (error) {
-      if (error.status === 401) {
-        setPleaseLoginMessage(<div className='login-message'>Please login first!</div>)
-        setTimeout(() => {
-          setPleaseLoginMessage(null)
-        }, 1000)
-        return navigate('/sign-in')
-      }
+    } catch {
       setFollowError('Something went wrong. Please try again!')
       setTimeout(() => {
         setFollowError('')
@@ -126,7 +119,18 @@ export default function ArticleDetails({
                     <button
                       className='article-details__creator-follow'
                       type='button'
-                      onClick={followUser}
+                      onClick={() => {
+                        if (!userLoggedInToken) {
+                          setPleaseLoginMessage(
+                            <div className='login-message'>Please login first!</div>,
+                          )
+                          setTimeout(() => {
+                            setPleaseLoginMessage(null)
+                          }, 1000)
+                          return navigate('/sign-in')
+                        }
+                        followUser()
+                      }}
                     >
                       {isLoadingFollow ? 'Loading...' : 'Follow'}
                     </button>

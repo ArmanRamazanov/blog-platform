@@ -3,6 +3,7 @@ import '../../assets/styles/Home.css'
 import { lazy, Suspense, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { articlesLoader } from '../../assets/helperFunctions/articlesLoader'
+import { tagsLoader } from '../../assets/helperFunctions/tagsLoader'
 
 //tail-chase loader
 import { TailChase } from 'ldrs/react'
@@ -22,6 +23,9 @@ export default function Home({
   successMessage,
 }) {
   const [articles, setArticles] = useState(null)
+  const [tagsList, setTagsList] = useState([])
+  const [tagsLoadingError, setTagsLoadingError] = useState('')
+
   useEffect(() => {
     const loader = async () => {
       try {
@@ -35,6 +39,19 @@ export default function Home({
     loader()
   }, [currentPage])
 
+  useEffect(() => {
+    const loader = async () => {
+      try {
+        const tags = await tagsLoader()
+        const tagsFiltered = tags.tags.filter((tag, index) => index < 5)
+        setTagsList(tagsFiltered)
+      } catch (error) {
+        setTagsLoadingError(error)
+      }
+    }
+    loader()
+  }, [])
+
   return (
     <>
       <div className='main__banner'>
@@ -45,23 +62,14 @@ export default function Home({
         <div className='main__search-tags-inner'>
           <p>Popular tags</p>
           <ul className='main__search-tags-list'>
-            <li>
-              <button>tag</button>
-            </li>
-            <li>
-              <button>tag</button>
-            </li>
-            <li>
-              <button>tag</button>
-            </li>
-            <li>
-              <button>tag</button>
-            </li>
-            <li>
-              <button>tag</button>
-            </li>
+            {tagsList?.map((tag) => (
+              <li key={tag}>
+                <button>{tag}</button>
+              </li>
+            ))}
           </ul>
         </div>
+        {tagsLoadingError && <span className='error'>{tagsLoadingError}</span>}
       </div>
       <section className='main__section'>
         <Suspense
